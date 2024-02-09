@@ -1,0 +1,20 @@
+"divxtotal": {
+    "enabled": true,
+    "predefined": false,
+    "private": false,
+    "name": "Divxtotal",
+    "languages": "es",
+    "base_url": "https://www2.divxtotal.mov/buscar.html?query=QUERYEXTRA",
+    "color": "FFFFFFFF",
+    "general_keywords": "{title:original}",
+    "parser": {
+        "row": "find_once(tag='div', select=('class', 'list')).find_all('div', recursive=False)",
+        "name": "item(tag='h2', order=0).text",
+        "torrent": "'https://www2.divxtotal.mov' + item(tag='a', order=0, get='href')",
+        "size": "item(tag='div', order=2).text",
+        "seeds": "item(tag='div', order=4).text",
+        "peers": "item(tag='div', order=6).text"
+    },
+    "separator": "%20",
+    "subpage": false
+}
